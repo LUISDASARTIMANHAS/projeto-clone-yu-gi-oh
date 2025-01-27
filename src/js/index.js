@@ -5,8 +5,22 @@ window.addEventListener("load", () => {
     const cartoes = document.querySelectorAll(".cartao");
     let cartaoAtual = 0;
 
+    cartoes.forEach(cartao =>{
+      cartao.addEventListener("click",function (){
+        const cartaVirada = document.querySelector(".carta-virada");
+        const descricao = cartao.querySelector(".descricao");
+
+        // virar o cartão
+        cartao.classList.toggle("virar")
+        // mostrar fundo
+        cartaVirada.classList.toggle("mostrar-fundo-carta")
+        // esconder descrição para resoluções menores
+        descricao.classList.toggle("esconder");
+      })
+    })
+
     // indentificando o clique do botão
-    btnAvancar.addEventListener("click", function () {
+    btnAvancar.addEventListener("click", () => {
       if (cartaoAtual === cartoes.length - 1) return;
       console.log(cartaoAtual + "<=" + cartoes.length - 1);
 
@@ -16,7 +30,7 @@ window.addEventListener("load", () => {
     });
 
     // Identificando o clique do botão
-    btnVoltar.addEventListener("click", function () {
+    btnVoltar.addEventListener("click", () =>{
       if (cartaoAtual == 0) return;
       console.log(cartaoAtual + "<=" + cartoes.length - 1);
 
